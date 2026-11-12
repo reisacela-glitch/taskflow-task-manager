@@ -1,0 +1,294 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="TaskFlow is a simple task management app that helps you organize your work and stay productive."
+    >
+
+    <meta name="theme-color" content="#24243a">
+
+    <title>TaskFlow | Task Manager</title>
+
+    <link rel="icon" type="image/png" href="taskflow-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <h2>TaskFlow.</h2>
+
+            <nav aria-label="Main navigation">
+
+                <a href="#" class="active">Dashboard</a>
+
+                <a href="#tasks">My Tasks</a>
+
+                <a href="#tasks" id="completedNav">Completed</a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <p>Stay focused.</p>
+
+                <small>Make every day count.</small>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main-content">
+
+            <!-- HEADER -->
+
+            <header>
+
+                <div>
+
+                    <span class="welcome-label">
+                        YOUR WORKSPACE
+                    </span>
+
+                    <h1>My Workspace</h1>
+
+                    <p>
+                        Manage your tasks and stay productive.
+                    </p>
+
+                </div>
+
+            </header>
+
+            <!-- STATISTICS -->
+
+            <section class="stats" aria-label="Task statistics">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">▤</div>
+
+                    <h3>Total Tasks</h3>
+
+                    <p id="totalTasks">0</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">◷</div>
+
+                    <h3>Pending</h3>
+
+                    <p id="pendingTasks">0</p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">✓</div>
+
+                    <h3>Completed</h3>
+
+                    <p id="completedTasks">0</p>
+
+                </div>
+
+            </section>
+
+            <!-- TASK SECTION -->
+
+            <section class="tasks-section" id="tasks">
+
+                <div class="tasks-header">
+
+                    <div>
+
+                        <h2>My Tasks</h2>
+
+                        <p class="section-description">
+                            Keep track of what you need to do.
+                        </p>
+
+                    </div>
+
+                    <button id="addTaskBtn" type="button">
+                        + Add Task
+                    </button>
+
+                </div>
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search your tasks..."
+                        aria-label="Search tasks"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <!-- FILTERS -->
+
+                <div class="filters" aria-label="Filter tasks">
+
+                    <button
+                        class="filter active"
+                        data-filter="all"
+                        type="button"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="pending"
+                        type="button"
+                    >
+                        Pending
+                    </button>
+
+                    <button
+                        class="filter"
+                        data-filter="completed"
+                        type="button"
+                    >
+                        Completed
+                    </button>
+
+                </div>
+
+                <!-- TASK LIST -->
+
+                <div id="taskList"></div>
+
+            </section>
+
+            <!-- FOOTER -->
+
+            <footer class="page-footer">
+
+                TaskFlow © 2026 · Stay organized, stay productive.
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <!-- EDIT TASK MODAL -->
+
+    <div
+        class="modal-overlay"
+        id="editTaskModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="editModalTitle"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <h2 id="editModalTitle">Edit Task</h2>
+
+                <button
+                    type="button"
+                    class="close-modal"
+                    id="closeModalBtn"
+                    aria-label="Close edit window"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+            <form id="editTaskForm">
+
+                <label for="editTaskTitle">
+                    Task Name
+                </label>
+
+                <input
+                    type="text"
+                    id="editTaskTitle"
+                    placeholder="Enter task name"
+                    maxlength="100"
+                    required
+                >
+
+                <label for="editTaskPriority">
+                    Priority
+                </label>
+
+                <select id="editTaskPriority">
+
+                    <option value="low">Low</option>
+
+                    <option value="medium">Medium</option>
+
+                    <option value="high">High</option>
+
+                </select>
+
+                <label for="editTaskDate">
+                    Due Date (DD-MM-YYYY)
+                </label>
+
+                <input
+                    type="text"
+                    id="editTaskDate"
+                    placeholder="12-11-2026"
+                    maxlength="10"
+                >
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelEditBtn"
+                        class="cancel-btn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
